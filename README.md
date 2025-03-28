@@ -1,0 +1,1 @@
+# Neste projeto, vou aprender e aplicar comandos do Git na prática.
