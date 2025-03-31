@@ -14,17 +14,37 @@ Agora é hora de usarmos o **Git**
 
 Na pasta do seu projeto **manual-git** sera criado uma pasta chamada `.git` e é ali que contem toda a funcionabilidade **Git**, então não apague.
 
-6. `git add <arquivo>` O comando `git add` prepara as alterações de um arquivo, movendo-as para a área de **staging**, onde ficam prontas para o _commit_. Ele é essencial para indicar ao **Git** quais alterações devem ser incluídas no próximo _commit_.
+`git add <arquivo>` O comando `git add` prepara as alterações de um arquivo, movendo-as para a área de **staging**, onde ficam prontas para o _commit_. Ele é essencial para indicar ao **Git** quais alterações devem ser incluídas no próximo _commit_.
 
-`git add README.md` Isso adiciona o arquivo `README.md` à área de staging.  
+`git add README.md` Isso adiciona o arquivo `README.md` à área de **staging**.  
 `git add .` Adicionar todos os arquivos modificados.    
 
-- `git branch -M "main"` Este comando renomeia a branch principal do repositório de `master` para `main`. Essa **mudança** é **recomendada** para promover uma nomenclatura mais inclusiva e alinhada às práticas modernas adotadas por plataformas como o **GitHub**.
-8. `git commit -m "minha descrição"` Utilizando este comando, você registra as alterações realizadas no repositório, associando uma mensagem que descreve claramente as modificações efetuadas. Mensagens de _commit_ bem elaboradas são essenciais para manter um histórico de alterações organizado e compreensível. 
+## Comitar arquivo/diretório
 
-## Interfaces Gráficas do Git
+`git commit -m "descrição"` Salva as alterações no repositório, com uma mensagem que explica as mudanças feitas. Mensagens bem escritas são fundamentais para um histórico claro e organizado.
+
+`git commit meu_arquivo.txt -m "descrição"` Registrar alterações de um arquivo específico
+
+### Interfaces Gráficas do Git
+
+`git status` Verificar estado dos arquivos/diretórios:
 
 ​Após realizar um _commit_, é comum querer visualizar de forma mais intuitiva o estado atual do projeto e as alterações implementadas. Embora o **Git** seja amplamente utilizado via linha de comando, diversas interfaces gráficas estão disponíveis para facilitar essa visualização. Essas ferramentas permitem examinar o histórico de _commits_, comparar versões e identificar alterações específicas. Para uma visão abrangente dos tipos de [interfaces gráficas disponíveis](https://git-scm.com/downloads/guis).
+
+
+## Branch
+
+`git branch -M "main"` Este comando renomeia a branch principal do repositório de `master` para `main`. Essa **mudança** é **recomendada** para promover uma nomenclatura mais inclusiva e alinhada às práticas modernas adotadas por plataformas como o **GitHub**.
+
+- `git branch` Listar branches  
+
+- `git branch <nome>` Criando um novo branch
+
+- `git checkout <nome>` Trocando para um branch existente
+
+- `git checkout -b <nome>` Criar um novo branch e trocar
+
+- `git branch -D <nome>` Apagando um branch
 
 # Enviando seu repositório local para o GitHub
 
@@ -37,10 +57,28 @@ Na pasta do seu projeto **manual-git** sera criado uma pasta chamada `.git` e é
 
 Após criar o repositório no **GitHub**, você verá uma **URL** de acesso remoto do repositório. Ela será algo como `https://github.com/SeuUsuario/manual-git.git`. Agora, você precisa associar o repositório local ao repositório remoto.
 
-1. `git remote add origin <link do repositório>` Isso adiciona o repositório do **GitHub** como um repositório remoto para o seu repositório local. O nome `origin` é o nome padrão usado para o repositório remoto principal.
+- `git remote add origin <link do repositório>` Isso adiciona o repositório do **GitHub** como um repositório remoto para o seu repositório local. O nome `origin` é o nome padrão usado para o repositório remoto principal.
 
 Agora já temos o nosso repositório local conectado com o respositório do **Github**, porém o _commit_ que damos na máquina não sobe automaticamente para a plataforma para isso precisaremos fazer o primeiro **_push_** para o **GitHub**.
 
-2. `git push -u origin main` Esse comando faz o **_push_** da sua branch `main` para o repositório remoto no **GitHub**. O `-u` configura o repositório remoto como o destino padrão para a sua branch main.
+- `git push -u origin main` O primeiro **pushes** é necessário para dizer ao **Git** qual repositório remoto e branch usar por padrão. Isso evita que você precise repetir `-u origin main` em futuros pushes. 
 
-Após o **_push_** ser concluído, vá até o **GitHub** e recarregue a página do repositório. Você verá todos os seus arquivos, que você adicionou anteriormente.
+- Depois disso, basta usar `git push`, pois o **Git** já sabe para onde enviar as alterações.
+
+Após o **_push_**, acesse seu repositório no **GitHub** e recarregue a página para ver os arquivos enviados.
+
+## Atualizar repositório local de acordo com o repositório remoto
+
+`git pull` Atualiza o repositório local sincronizando as alterações mais recentes do repositório remoto.
+
+`git fetch -p` Atualiza as referências do repositório remoto sem modificar sua branch atual e remove automaticamente referências locais de branches que foram excluídas no remoto.
+
+`git fetch` Atualiza o repositório repositório remoto sem alterar sua branch atual.
+
+## Pull
+
+`git pull` É utilizado para atualizar o repositório local com as alterações feitas no repositório remoto.
+
+- **Fetch**: Baixa as últimas alterações do repositório remoto, como novos commits ou branches.
+
+- **Merge**: Integra essas alterações ao seu repositório local, atualizando o seu código com o que foi alterado remotamente.
