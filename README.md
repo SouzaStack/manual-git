@@ -4,7 +4,7 @@
 
 Para utilizar o Git no seu computador, você precisa instalá-lo.
 
-[🔗 Guia de instalação do Git](https://emalherbi.github.io/aulas/programacao-web/aula-7-git/#/)
+🔗 [Guia de instalação do Git](https://emalherbi.github.io/aulas/programacao-web/aula-7-git/#/)
 
 Após instalar, verifique a versão do Git com:
 ```
