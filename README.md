@@ -1,6 +1,6 @@
 # Guia Completo - Git & GitHub para Iniciantes
 
-## 1️⃣ Instalação do Git
+## Instalação do Git
 
 Para utilizar o Git no seu computador, você precisa instalá-lo.
 
@@ -11,7 +11,7 @@ Após instalar, verifique a versão do Git com:
 git --version
 ```
 
-## 2️⃣ Configuração Inicial
+## Configuração Inicial
 
 Após instalar, é necessário configurar o Git com seu nome e e-mail, que serão usados nos commits.
 
@@ -30,7 +30,7 @@ Essas configurações ficam armazenadas no arquivo **.gitconfig**, localizado no
 📌 **Windows**: C:\Users\SEU_NOME\.gitconfig    
 📌 **Linux/Mac**: ~/.gitconfig
 
-## 3️⃣ Criando ou Clonando um Repositório
+## Criando ou Clonando um Repositório
 
 ### Criar um novo repositório Git
 
@@ -52,7 +52,23 @@ Se o repositório já existe no GitHub, você pode baixá-lo no seu computador:
 git clone link_do_repositorio
 ```
 
-## 4️⃣ Controle de Arquivos
+## Repositório Remoto
+### Adicionar um novo repositório remoto ao seu repositório local
+```
+git remote add origin <link do repositório>
+```
+
+### Exibir os repositórios remotos
+```
+git remote -v
+```
+
+### Exibir informações dos repositórios remotos
+```
+git remote show origin
+```
+
+## Controle de Arquivos
 
 ### Verificar o estado dos arquivos
 ```
@@ -83,7 +99,7 @@ git add meu_diretorio/
 git commit -m "Descrição da alteração"
 ```
 
-## 5️⃣ Trabalhando com Branches
+## Trabalhando com Branches
 
 ### Criar e mudar para um novo branch
 ```
@@ -121,7 +137,7 @@ git branch -D nome_do_branch
 git push origin --delete nome_do_branch
 ```
 
-## 6️⃣ Merge - Unir uma Branch à Principal (`main`)
+## Merge - Unir uma Branch à Principal (`main`)
 
 ### Passo 1: Trocar para a branch main
 Antes de mesclar, sempre atualize a branch principal para evitar conflitos:
@@ -149,7 +165,7 @@ git branch -D nome_do_branch
 git push origin --delete nome_do_branch
 ```
 
-## 7️⃣ Enviar e Atualizar o Repositório
+## Enviar e Atualizar o Repositório
 
 ### Enviar commits para o repositório remoto
 ```
@@ -166,7 +182,7 @@ git pull
 git fetch -p
 ```
 
-## 8️⃣ Histórico e Logs
+## Histórico e Logs
 ### Exibir histórico de commits
 ```
 git log
@@ -182,7 +198,7 @@ git log --oneline --graph --all
 git log -p -2
 ```
 
-## 9️⃣ Stash - Guardar Alterações Temporariamente
+## Stash - Guardar Alterações Temporariamente
 Se precisar mudar de branch sem perder suas mudanças, use stash:
 
 ### Criar um stash
@@ -200,7 +216,7 @@ git stash list
 git stash apply
 ```
 
-## 🔟 Comandos Rápidos
+## Comandos Rápidos
 ### Criar um branch e enviá-lo para o repositório
 ```
 git checkout -b novo_branch
