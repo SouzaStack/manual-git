@@ -65,8 +65,6 @@ git commit -m "descrição"
 
 O `git commit` salva as alterações no repositório, com uma mensagem que explica as mudanças feitas. Mensagens bem escritas são fundamentais para um histórico claro e organizado.
 
-![Ilustração de Imagem - Versionamento](./image/04.png)
-
 ##### Atualizando commit de arquivo modificado
 
 ```
