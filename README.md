@@ -1,150 +1,347 @@
 # Guia rápido e Comandos básicos Git e Github
 
-- O **Git** é um repositório(inventário, coleção) para seus códigos. Com ele, você pode "_voltar ao passado_" no seu código, através do **commits**.
+### Instalação
 
-- O **Github** é o seu repositório na nuvem.
+[Instalação GIT](https://emalherbi.github.io/aulas/programacao-web/aula-7-git/#/)
 
-# Criando um repositório no GitHub
-Acesse sua conta no **Github** e clique no sinal de mais para abrir o menu e em seguida em **New repository**.
+# Configurações
 
-![Imagem de ilustração - Inicialização](./image/01.png)
+- As configurações do GIT são armazenadas no arquivo **.gitconfig** localizado dentro do diretório do usuário do Sistema Operacional;
 
-Dê o nome de sua preferência, além da descrição e indique se seu repositório será público ou privado.
+- (Ex.: Windows: C:\Users\NOME_PC\.gitconfig);
 
-![Criando um novo repositório](./image/02.png)
+- As configurações realizadas através dos comandos abaixo serão incluídas no arquivo citado acima;
 
-Para finalizar, clique em **Create repository**.
+# Setar usuário e e-mail
+```
+git config --global user.name "SEU NOME COMPLETO"
+git config --global user.email "seu@email.com"
+```
 
-Em seguida aparecerá uma tela com três opções:
+### Listar configurações
+```
+git config --list
+```
 
-![Ilustração de Imagem - Conluido](./image/03.png)
+# Repositório Local
 
-- A primeira diz respeito a crianção de um **novo repositório** (inclui a inicialização do **Git** no diretório local).
+Baixar o projeto no computador usando a opção **SSH** e enviar para o **GIT**.
 
-- A segunda diz respeito a um **repositório já existente** e que desejo colocar no GitHub (é a situação que irei utilizar).
+```
+git init 
+git add .
+git commit -m "meu comentário"
+git branch -M main
+git remote add origin git@github.com:emalherbi/git-descomplicado.git
+git push -u origin main
+```
 
-- A terceira diz respeito a **importação** de um código de outro repositório.
+# Clonar um repositório remoto já existente
+```
+git clone link_repositório_que_deseja_copiar
+```
 
-# Criando repositório local
+# Criar novo repositório
 
-Na pasta do seu projeto sera criado uma pasta chamada .git e é ali que contem toda a funcionabilidade Git, então não apague.
+Isso cria um novo subdiretório chamado .git que contém todos os arquivos necessários de seu repositório (um esqueleto de repositório Git):
 
 ```
 git init
 ```
 
-##### Verificar estado dos arquivos/diretórios:
+### Verificar estado dos arquivos/diretórios:
 
 ```
 git status
 ```
 
-##### Adicionando seus arquivos ao Git
+# Adicionar arquivo/diretório (staged area):
 
-```
-git add nome_do_arquivo
-```
+Adiciona os arquivos novos ou alterados em seu diretório de trabalho à área de preparação do Git.
 
-
-##### Isso adiciona o arquivo `README.md` à área de **staging**. 
-
-```
-git add README.md
-``` 
-
-##### Adicionar todos os arquivos de uma só vez:
+#### Adicionar todos os arquivos/diretórios
 ```
 git add .
 ```
 
-##### Agora é preciso fazer o commit para que o Git possa rastrear suas modificações:
-
+#### Adicionar um arquivo em específico
 ```
-git commit -m "descrição"
-```
-
-O `git commit` salva as alterações no repositório, com uma mensagem que explica as mudanças feitas. Mensagens bem escritas são fundamentais para um histórico claro e organizado.
-
-##### Atualizando commit de arquivo modificado
-
-```
-git commit -am 'descrição'
+git add meu_arquivo.txt
 ```
 
-# Ligando seu repositório local ao GitHub
-
-Após criar o repositório no **GitHub**, você verá uma **URL** de acesso remoto do repositório. Ela será algo como `https://github.com/SeuUsuario/link-repositório`. Agora, você precisa associar o repositório local ao repositório remoto.
-
+#### Adicionar um diretório em específico
 ```
-git remote add origin <link do repositório>
+git add meu_diretorio
 ```
 
-# Enviando suas alterações
+# Comitar arquivo/diretório
 
-Pela primeira vez é necessário **-u origin main** para dizer ao **Git** qual repositório remoto e branch usar por padrão. Isso evita que você precise repetir em futuros pushes.
+- Para realmente confirmar estas mudanças (isto é, fazer um commit)
 
+- Agora o arquivo é enviado para o HEAD, mas ainda não para o repositório remoto.
+
+```
+git commit -m "meu comentário"
+```
+
+#### Comitar arquivo específico informando uma mensagem
+```
+git commit meu_arquivo.txt -m "meu comentário"
+```
+
+# Enviar arquivos/diretórios para o repositório remoto
+
+O primeiro push de um repositório deve conter o nome do repositório remoto e o branch.
 ```
 git push -u origin main
-``` 
-
-#### Depois disso, basta usar `git push`, pois o **Git** já sabe para onde enviar suas alterações.
-
-# Copiando um repositório
-
-```
-git clone link_repositório_que_deseja_copiar
 ```
 
-# Criando branches
-
-`git branch -M "main"` Este comando renomeia a branch principal do repositório de `master` para `main`. Essa **mudança** é **recomendada** para promover uma nomenclatura mais inclusiva e alinhada às práticas modernas adotadas por plataformas como o **GitHub**.
-
-##### Listar branches existentes
-
+#### Os demais pushes não precisam dessa informação
 ```
-git branch
-``` 
-
-##### Criando um novo branch e trocar
-
-```
-git checkout -b nome_do_branch
+git push
 ```
 
-##### Trocando para um branch existente
+# Atualizar repositório local de acordo com o repositório remoto
 
-```
-git checkout nome_do_branch
-```
-
-##### Seus branches locais não estarão na nuvem a menos que você os envie.
-
-```
-git push origin nome_do_branch
-```
-
-##### Apagando um branch
-
-```
-git branch -D nome_do_branch
-```
-
-# Atualizando seu repositório local
-
-##### Pega as modificações que foram feitas no repositório remoto.
-
+#### Atualizar os arquivos no branch atual
 ```
 git pull
 ```
 
-# Desfazendo commits
+#### Buscar as alterações, mas não aplica-las no branch atual
+
+- `-p` = dizer ao git para remover do ramo local ramos remotos que não existem mais.
+```
+git fetch -p
+```
+
+# Branches
+
+- Este comando renomeia a branch principal do repositório de `master` para `main`. Essa **mudança** é **recomendada** para promover uma nomenclatura mais inclusiva e alinhada às práticas modernas adotadas por plataformas como o **GitHub**.
 
 ```
-git revert chave_do_commit
+git branch -M "main"
 ```
 
-##### A chave do commit é encontrada através do comando:
+#### Listar branches existentes
+```
+git branch
+``` 
 
+#### Criando um novo branch e trocar
+```
+git checkout -b nome_do_branch
+```
+
+#### Trocando para um branch existente
+```
+git checkout nome_do_branch
+```
+
+#### Apagando um branch
+```
+git branch -D nome_do_branch
+```
+
+# Listar branches
+
+#### Listar branches
+```
+git branch
+```
+
+###### Listar branches com informações dos últimos commits
+```
+git branch -v
+```
+
+###### Listar branches que já foram fundidos (merged) com o master
+```
+git branch --merged
+```
+
+###### Listar branches que não foram fundidos (merged) com o master
+```
+git branch --no-merged
+```
+
+# Criando branches no repositório remoto
+
+#### Criando um branch remoto
+```
+git push origin nome_do_branch
+```
+
+#### Baixar um branch remoto para edição
+```
+git checkout -b nome_do_branch origin/nome_do_branch
+```
+
+#### Apagar branch remoto
+```
+git push origin:nome_do_branch
+```
+
+# Visualizar histórico
+
+#### Exibir histórico
 ```
 git log
 ```
+
+#### Exibir histórico com diff das duas últimas alterações
+```
+git log -p -2
+```
+
+#### Exibir informações resumidas em uma linha (hash completa e comentário)
+```
+git log --pretty=oneline
+```
+
+#### Exibir histórico com formatação específica (hash abreviada, autor, data e comentário)
+- %h: Abreviação do hash;
+- %an: Nome do autor;
+- %ar: Data;
+- %s: Comentário.
+```
+git log --pretty=format:"%h - %an, %ar : %s"
+```
+
+#### Exibir histório de um determinado autor
+```
+git log --author=usuario
+```
+
+Verifique as demais opções de formatação no [Git Book](https://git-scm.com/book/pt-br/v2/Fundamentos-de-Git-Vendo-o-hist%c3%b3rico-de-Commits)
+
+
+# Rebasing
+
+Quando é necessário atualizar a branch **xyz** com as atualizações da **main**
+```
+git rebase main
+```
+
+Fazendo o **rebase**. Atualizar a branch **xyz** com a **main**
+```
+git checkout xyz
+git fetch origin main
+git rebase origin/main
+# Corrigir os conflitos
+git rebase --continue # ou git rebase --skip
+git push --force-with-lease
+```
+
+Mais informações e explicações sobre o [Rebasing](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
+
+# Stash
+
+- Para alternar entre um branch e outro é necessário fazer o commit das alterações atuais para depois trocar para um outro branch. Se existir a necessidade de realizar a troca sem fazer o commit é possível criar um **stash**.
+
+- O Stash como se fosse um branch temporário que contem apenas as alterações ainda não commitadas.
+
+#### Criar um stash
+```
+git stash
+```
+
+#### Listar stashes
+```
+git stash list
+```
+
+#### Voltar para o último stash
+```
+git stash apply
+```
+
+#### Criar um branch a partir de um stash
+```
+git stash branch nome_do_branch
+```
+
+# Repositório Remoto
+
+#### Exibir os repositórios remotos
+```
+git remote -v
+```
+
+#### Exibir informações dos repositórios remotos
+```
+git remote show origin
+```
+
+# Comandos Rápidos
+
+#### Atualizar o repositório main
+```
+git add .
+git commit -m "meu comentário"
+git push
+```
+
+#### Criar uma branch xyz e atualizar o repositório remoto
+```
+git checkout -b xyz
+# Realizar as alteração na branch
+git add .
+git commit -m "meu comentário"
+git push -u origin xyz
+```
+
+#### Retornar para branch main e atualizar o repositório local
+```
+git checkout main
+git pull
+```
+
+# Git Alias
+
+- As configurações do GIT são armazenadas no arquivo .gitconfig localizado dentro do diretório do usuário do Sistema Operacional;
+- (Ex.: Windows: C:\Users\NOME_PC\.gitconfig);
+
+```
+[user]
+  email = seu@email.com
+  name = SEU NOME COMPLETO
+[alias]
+  ad = add *
+  br = branch
+  brd = branch -D
+  ch = checkout
+  chb = checkout -b
+  cl = clone
+  co = commit -m
+  df = diff
+  ft = fetch -p
+  pl = pull
+  ps = push
+  psf = push --force-with-lease
+  rb = rebase origin/main
+  rbc = rebase --continue
+  rbs = rebase --skip
+  rs = reset --hard HEAD
+  st = status -sb
+  up = pull
+```
+
+#### Listar configurações
+```
+git config --list
+```
+
+# Contribuições
+
+Sinta-se a vontade para realizar adicionar mais informações ou realizar correções. Fork me!
+
+### Referências
+
+- [git - guides](https://github.com/git-guides/git-commit)
+
+- [git - book](https://git-scm.com/book/pt-br/v2/Fundamentos-de-Git-Obtendo-um-Reposit%C3%B3rio-Git)
+
+- [git - guia prático](http://rogerdudler.github.io/git-guide/index.pt_BR.html)
+
+- [git - comandos - leocomelli](https://gist.github.com/leocomelli/2545add34e4fec21ec16)
