@@ -4,25 +4,20 @@
 
 - O **Github** é o seu repositório na nuvem.
 
-### Baixando o Git
-- [Instalando, configurando e inicializando o Git no Linux](https://dev.to/womakerscode/instalando-configurando-e-inicializando-o-git-no-linux-2m96)
-
-- [Instalando, configurando e inicializando o Git no Windows](https://dev.to/womakerscode/tutorial-instalando-configurando-e-inicializando-o-git-no-windows-57cj)
-
 # Criando um repositório no GitHub
 Acesse sua conta no **Github** e clique no sinal de mais para abrir o menu e em seguida em **New repository**.
 
-![Imagem de ilustração - Inicialização](01.png)
+![Imagem de ilustração - Inicialização](./image/01.png)
 
 Dê o nome de sua preferência, além da descrição e indique se seu repositório será público ou privado.
 
-![Criando um novo repositório](02.png)
+![Criando um novo repositório](./image/02.png)
 
 Para finalizar, clique em **Create repository**.
 
 Em seguida aparecerá uma tela com três opções:
 
-![Ilustração de Imagem - Conluido](03.png)
+![Ilustração de Imagem - Conluido](./image/03.png)
 
 - A primeira diz respeito a crianção de um **novo repositório** (inclui a inicialização do **Git** no diretório local).
 
@@ -70,7 +65,7 @@ git commit -m "descrição"
 
 O `git commit` salva as alterações no repositório, com uma mensagem que explica as mudanças feitas. Mensagens bem escritas são fundamentais para um histórico claro e organizado.
 
-![Ilustração de Imagem - Versionamento](04.png)
+![Ilustração de Imagem - Versionamento](./image/04.png)
 
 ##### Atualizando commit de arquivo modificado
 
